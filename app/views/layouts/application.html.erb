@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Mini</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+
+  <header>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <a class="navbar-brand" href="/">みにアプリ</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarColor01">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="#"></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#"></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#"></a>
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <!-- user_signed_in? はユーザがログインしているか調べるdeviseのHelperメソッド -->
+      <% if user_signed_in? %> 
+        <!-- current_user は現在ログインしているUserオブジェクトを返すdeviseのHelperメソッド -->
+        <!-- *_path はUserモデルを作成したときに、
+        deviseにより自動で作成されてますので、rake routesで確認できます -->
+        Logged in as <strong><%= current_user.email %></strong>.
+        <%= link_to 'プロフィール変更', edit_user_registration_path,class: "btn" %> |
+        <%= link_to "ログアウト", sign_out_path,class: "btn" %>
+      <% else %>
+        <%= link_to "サインイン", new_user_registration_path,class: "btn" %> |
+        <%= link_to "ログイン", new_user_session_path,class: "btn" %>
+      <% end %>
+    </form>
+  </div>
+</nav>
+  </header>
+
+  <p class="notice"><%= notice %></p>
+  <p class="alert"><%= alert %></p>
+  
+  <%= yield %>
+  </body>
+</html>

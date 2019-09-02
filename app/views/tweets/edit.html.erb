@@ -1,0 +1,6 @@
+  <div class="contents row">
+    <%= form_with url:tweets_path do |form| %>
+    <%= form.text_area :text, value:@tweet.text %>
+    <%= form.submit %>
+    <% end %>
+  </div>

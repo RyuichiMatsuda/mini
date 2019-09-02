@@ -1,0 +1,11 @@
+<div>
+  <%= form_with url: tweets_path do |form| %>
+    
+    <%= form.text_area :text,class:"edit" %>
+    <%= form.submit%>
+<% end %>
+</div>
+  <% @tweets.each do |tweet| %>
+  <%= render partial: "tweet", locals: { tweet: tweet } %>
+  <% end %>
+  </div>
